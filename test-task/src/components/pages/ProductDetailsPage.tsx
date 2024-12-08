@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { fetchProductById } from "../../api/productsApi";
 import { Button, Typography, Container } from "@mui/material";
@@ -21,7 +21,11 @@ const ProductDetailPage = () => {
       <Typography variant="h6">{`$${product.price}`}</Typography>
       <Typography>{product.description}</Typography>
       <Link to="/Test-Task/products">
-        <Button variant="contained" color="primary">
+        <Button
+          sx={{ float: "right", mt: 2 }}
+          variant="contained"
+          color="primary"
+        >
           Back to Products
         </Button>
       </Link>

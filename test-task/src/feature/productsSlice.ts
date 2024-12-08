@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // Тип для продукта
 export interface Product {
@@ -23,7 +23,7 @@ const initialState: ProductsState = {
 };
 
 const productsSlice = createSlice({
-  name: 'products',
+  name: "products",
   initialState,
   reducers: {
     setProducts: (state, action: PayloadAction<Product[]>) => {
@@ -36,19 +36,19 @@ const productsSlice = createSlice({
       state.error = action.payload;
     },
     toggleFavorite: (state, action: PayloadAction<number>) => {
-      const product = state.products.find(p => p.id === action.payload);
+      const product = state.products.find((p) => p.id === action.payload);
       if (product) {
         product.isFavorite = !product.isFavorite;
       }
     },
     removeProduct: (state, action: PayloadAction<number>) => {
-      state.products = state.products.filter(p => p.id !== action.payload);
+      state.products = state.products.filter((p) => p.id !== action.payload);
     },
     addProduct: (state, action: PayloadAction<Product>) => {
       state.products.push(action.payload);
     },
     updateProduct: (state, action: PayloadAction<Product>) => {
-      const index = state.products.findIndex(p => p.id === action.payload.id);
+      const index = state.products.findIndex((p) => p.id === action.payload.id);
       if (index !== -1) {
         state.products[index] = action.payload;
       }
@@ -56,6 +56,14 @@ const productsSlice = createSlice({
   },
 });
 
-export const { setProducts, setLoading, setError, toggleFavorite, removeProduct, addProduct, updateProduct } = productsSlice.actions;
+export const {
+  setProducts,
+  setLoading,
+  setError,
+  toggleFavorite,
+  removeProduct,
+  addProduct,
+  updateProduct,
+} = productsSlice.actions;
 
 export default productsSlice.reducer;
